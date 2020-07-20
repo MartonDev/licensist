@@ -1,4 +1,5 @@
 import { License, LicenseMetadata } from '../types'
+import { downloadLicenseMetas, downloadLicenses } from './LicenseRequester'
 
 export class LicenseComparer {
 
@@ -9,7 +10,8 @@ export class LicenseComparer {
   // download licenses from github
   public async init () {
 
-    
+    this.licenseMetadatas = await downloadLicenseMetas()
+    this.licenses = await downloadLicenses(this.licenseMetadatas)
 
   }
 
@@ -21,18 +23,21 @@ export class LicenseComparer {
     let licenseName = this.findByName()
 
     if(licenseName !== null)
-      return this.licenses.find((license: License) => license.name === licenseName) // got name, lets find the full license data
+      return this.licenses.find((license: License) => license.name.toLowerCase() === licenseName.toLowerCase()) // got name, lets find the full license data
 
     return null // could not identify license
 
   }
+
+  public getLicenses = () => this.licenses
+  public getLicenseMetas = () => this.licenseMetadatas
 
   // attempts to find the name of any license in the license text
   // returns the license key
   private findByName (): string | null {
 
     for(const licenseMeta of this.licenseMetadatas)
-      if(this.currentLicenseText.toLowerCase().trim().includes(licenseMeta.name))
+      if(this.currentLicenseText.toLowerCase().trim().includes(licenseMeta.name.toLowerCase()))
         return licenseMeta.name
 
     return null

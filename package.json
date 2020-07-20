@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "start": "tsc && node dist/index.js"
+    "start": "tsc && node dist/index.js",
+    "test": "tsc && node dist/tests/index.js"
   },
   "repository": "https://github.com/MartonDev/licensist.git",
   "author": "Marton Lederer <martondeveloper@gmail.com>",
