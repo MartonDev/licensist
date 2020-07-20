@@ -1,0 +1,23 @@
+{
+  "name": "licensist",
+  "version": "1.0.0",
+  "description": "A simple node package to get the license title and other info from a license string, using GitHub's license api",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "tsc && node dist/index.js"
+  },
+  "repository": "https://github.com/MartonDev/licensist.git",
+  "author": "Marton Lederer <martondeveloper@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "axios": "^0.19.2"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/node": "^14.0.23",
+    "eslint": "^7.5.0",
+    "typescript": "^3.9.7"
+  }
+}
