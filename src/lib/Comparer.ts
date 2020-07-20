@@ -7,7 +7,7 @@ export class LicenseComparer {
   licenses: Array<License>
 
   // download licenses from github
-  public init () {
+  public async init () {
 
     
 
